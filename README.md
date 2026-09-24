@@ -11,9 +11,17 @@ https://nilyma0n.github.io/snake-game/
 
 > A classic Snake Game with a modern interface, multiple fruits, coins, increasing difficulty and responsive controls.
 
-![Snake Game](https://via.placeholder.com/900x500?text=Snake+Game+Screenshot)
+### 🏠 Start Screen
 
----
+![Snake Game Start Screen](images/start-screen.jpg)
+
+### 🎮 Gameplay
+
+![Snake Game Gameplay](images/gameplay.jpg)
+
+### 💀 Game Over
+
+![Snake Game Game Over](images/game-over.jpg)
 
 ## ✨ Features
 
