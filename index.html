@@ -1,34 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Snake Game</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
-    <div class="game-container">
+    <main class="game-wrapper">
 
-        <h1>🐍 Snake Game</h1>
 
-        <div class="score-board">
-            <span>Score: <b id="score">0</b></span>
-            <span>High Score: <b id="highScore">0</b></span>
+        <!-- =========================================
+             START SCREEN
+        ========================================== -->
+
+        <section
+            id="startScreen"
+            class="screen"
+        >
+
+            <div class="snake-icon">
+                🐍
+            </div>
+
+
+            <h1>
+                SNAKE GAME
+            </h1>
+
+
+            <p class="subtitle">
+                Eat the food. Collect coins.
+                Grow your snake!
+            </p>
+
+
+            <div class="high-score-box">
+
+                High Score:
+
+                <strong id="menuHighScore">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="coin-menu-box">
+
+                🪙 Coins:
+
+                <strong id="menuCoins">
+                    0
+                </strong>
+
+            </div>
+
+
+            <button
+                id="startBtn"
+                class="main-btn"
+            >
+                ▶ START GAME
+            </button>
+
+
+            <p class="controls-text">
+                Use ⬆️ ⬇️ ⬅️ ➡️ Arrow Keys
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================================
+             GAME SCREEN
+        ========================================== -->
+
+        <section
+            id="gameScreen"
+            class="screen hidden"
+        >
+
+
+            <!-- GAME HEADER -->
+
+            <header class="game-header">
+
+
+                <div class="stat-box">
+
+                    <span class="label">
+                        SCORE
+                    </span>
+
+                    <strong id="score">
+                        0
+                    </strong>
+
+                </div>
+
+
+
+                <div class="stat-box">
+
+                    <span class="label">
+                        BEST
+                    </span>
+
+                    <strong id="highScore">
+                        0
+                    </strong>
+
+                </div>
+
+
+
+                <div class="stat-box coin-stat">
+
+                    <span class="label">
+                        🪙 COINS
+                    </span>
+
+                    <strong id="coins">
+                        0
+                    </strong>
+
+                </div>
+
+
+
+                <button
+                    id="pauseBtn"
+                    class="pause-btn"
+                >
+                    ⏸
+                </button>
+
+
+            </header>
+
+
+
+            <!-- GAME CANVAS -->
+
+            <canvas
+                id="gameCanvas"
+                width="400"
+                height="400"
+            >
+            </canvas>
+
+
+
+            <!-- MESSAGE -->
+
+            <p id="gameMessage">
+                Eat the fruit!
+            </p>
+
+
+
+            <!-- MOBILE CONTROLS -->
+
+            <div class="mobile-controls">
+
+
+                <button
+                    data-direction="up"
+                >
+                    ⬆️
+                </button>
+
+
+                <div>
+
+                    <button
+                        data-direction="left"
+                    >
+                        ⬅️
+                    </button>
+
+
+                    <button
+                        data-direction="down"
+                    >
+                        ⬇️
+                    </button>
+
+
+                    <button
+                        data-direction="right"
+                    >
+                        ➡️
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================================
+             GAME OVER SCREEN
+        ========================================== -->
+
+        <section
+            id="gameOverScreen"
+            class="screen hidden"
+        >
+
+
+            <div class="game-over-icon">
+                💀
+            </div>
+
+
+            <h1>
+                GAME OVER
+            </h1>
+
+
+           <p
+    id="gameOverReason"
+    class="game-over-reason"
+>
+    Your snake has stopped!
+</p>
+
+
+
+            <div class="result-box">
+
+
+                <div>
+
+                    <span>
+                        SCORE
+                    </span>
+
+                    <strong id="finalScore">
+                        0
+                    </strong>
+
+                </div>
+
+
+
+                <div>
+
+                    <span>
+                        BEST
+                    </span>
+
+                    <strong id="finalHighScore">
+                        0
+                    </strong>
+
+                </div>
+
+
+
+                <div>
+
+                    <span>
+                        🪙 COINS
+                    </span>
+
+                    <strong id="finalCoins">
+                        0
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <button
+                id="playAgainBtn"
+                class="main-btn"
+            >
+                🔄 PLAY AGAIN
+            </button>
+
+
+            <button
+                id="menuBtn"
+                class="secondary-btn"
+            >
+                🏠 MAIN MENU
+            </button>
+
+
+        </section>
+
+
+
+        <!-- =========================================
+             PAUSE OVERLAY
+        ========================================== -->
+
+        <div
+            id="pauseOverlay"
+            class="pause-overlay hidden"
+        >
+
+            <h2>
+                ⏸ GAME PAUSED
+            </h2>
+
+
+            <button
+                id="resumeBtn"
+                class="main-btn"
+            >
+                ▶ RESUME
+            </button>
+
         </div>
 
-        <canvas id="gameCanvas" width="400" height="400"></canvas>
 
-        <p id="gameMessage">Use Arrow Keys to Move</p>
+    </main>
 
-        <button id="restartBtn">Restart Game</button>
 
-    </div>
 
     <script src="script.js"></script>
 
 </body>
+
 </html>

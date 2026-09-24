@@ -1,91 +1,608 @@
+/* ============================================
+   RESET
+============================================ */
+
 * {
+
     margin: 0;
+
     padding: 0;
+
     box-sizing: border-box;
 }
 
+
+/* ============================================
+   BODY
+============================================ */
+
 body {
+
     min-height: 100vh;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
     font-family: Arial, sans-serif;
 
-    background: #111827;
+    background:
+        radial-gradient(
+            circle at top,
+            #243447,
+            #0b1120 70%
+        );
+
     color: white;
+
+    padding: 20px;
 }
 
-.game-container {
-    text-align: center;
 
-    background: #1f2937;
+/* ============================================
+   GAME WRAPPER
+============================================ */
+
+.game-wrapper {
+
+    position: relative;
+
+    width: 500px;
+
+    max-width: 100%;
+
+    background: #111827;
+
+    border: 1px solid #374151;
+
+    border-radius: 24px;
 
     padding: 25px;
 
-    border-radius: 20px;
-
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    box-shadow:
+        0 25px 60px
+        rgba(0, 0, 0, 0.55);
 }
+
+
+/* ============================================
+   SCREEN
+============================================ */
+
+.screen {
+
+    width: 100%;
+
+    text-align: center;
+}
+
+
+.hidden {
+
+    display: none !important;
+}
+
+
+/* ============================================
+   START SCREEN
+============================================ */
+
+.snake-icon {
+
+    font-size: 75px;
+
+    margin-bottom: 10px;
+}
+
 
 h1 {
-    margin-bottom: 15px;
+
+    font-size: 38px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 12px;
 }
 
-.score-board {
-    display: flex;
-    justify-content: space-between;
 
-    margin-bottom: 15px;
+.subtitle {
 
-    font-size: 18px;
+    color: #9ca3af;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
 }
 
-#gameCanvas {
-    display: block;
 
-    background: #0f172a;
+/* ============================================
+   HIGH SCORE
+============================================ */
 
-    border: 4px solid #374151;
+.high-score-box {
 
-    border-radius: 10px;
-}
+    background: #1f2937;
 
-#gameMessage {
-    margin: 15px 0;
+    border: 1px solid #374151;
+
+    border-radius: 14px;
+
+    padding: 15px;
+
+    margin-bottom: 12px;
 
     color: #d1d5db;
 }
 
-#restartBtn {
-    padding: 12px 25px;
+
+.high-score-box strong {
+
+    display: block;
+
+    font-size: 28px;
+
+    color: #4ade80;
+
+    margin-top: 5px;
+}
+
+
+/* ============================================
+   COIN MENU
+============================================ */
+
+.coin-menu-box {
+
+    background: #1f2937;
+
+    border: 1px solid #374151;
+
+    border-radius: 14px;
+
+    padding: 15px;
+
+    margin-bottom: 25px;
+
+    color: #d1d5db;
+}
+
+
+.coin-menu-box strong {
+
+    display: block;
+
+    font-size: 28px;
+
+    color: #facc15;
+
+    margin-top: 5px;
+}
+
+
+/* ============================================
+   BUTTONS
+============================================ */
+
+.main-btn,
+.secondary-btn,
+.pause-btn,
+.mobile-controls button {
 
     border: none;
-    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    transition:
+        transform 0.15s,
+        opacity 0.15s;
+}
+
+
+.main-btn {
+
+    width: 100%;
+
+    padding: 15px 20px;
+
+    border-radius: 12px;
 
     background: #22c55e;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+}
+
+
+.main-btn:hover {
+
+    transform: translateY(-2px);
+
+    opacity: 0.9;
+}
+
+
+.secondary-btn {
+
+    width: 100%;
+
+    padding: 13px;
+
+    margin-top: 10px;
+
+    border-radius: 12px;
+
+    background: #374151;
+
     color: white;
 
     font-size: 16px;
+}
+
+
+.secondary-btn:hover {
+
+    opacity: 0.9;
+
+    transform: translateY(-2px);
+}
+
+
+/* ============================================
+   CONTROLS TEXT
+============================================ */
+
+.controls-text {
+
+    color: #6b7280;
+
+    margin-top: 20px;
+
+    font-size: 14px;
+}
+
+
+/* ============================================
+   GAME HEADER
+============================================ */
+
+.game-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
+
+.stat-box {
+
+    flex: 1;
+
+    text-align: center;
+}
+
+
+.label {
+
+    display: block;
+
+    font-size: 11px;
+
+    color: #9ca3af;
+
+    letter-spacing: 1px;
+}
+
+
+.game-header strong {
+
+    display: block;
+
+    font-size: 22px;
+
+    color: #4ade80;
+
+    margin-top: 2px;
+}
+
+
+.coin-stat strong {
+
+    color: #facc15;
+}
+
+
+/* ============================================
+   PAUSE BUTTON
+============================================ */
+
+.pause-btn {
+
+    width: 45px;
+
+    height: 45px;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background: #374151;
+
+    color: white;
+
+    font-size: 20px;
+}
+
+
+.pause-btn:hover {
+
+    transform: scale(1.05);
+}
+
+
+/* ============================================
+   CANVAS
+============================================ */
+
+#gameCanvas {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    background: #07111f;
+
+    border: 4px solid #374151;
+
+    border-radius: 14px;
+}
+
+
+/* ============================================
+   GAME MESSAGE
+============================================ */
+
+#gameMessage {
+
+    min-height: 22px;
+
+    margin: 12px 0;
+
+    color: #9ca3af;
+
+    font-size: 14px;
+}
+
+
+/* ============================================
+   GAME OVER
+============================================ */
+
+.game-over-icon {
+
+    font-size: 70px;
+
+    margin-bottom: 10px;
+}
+
+
+.result-box {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    background: #1f2937;
+
+    border-radius: 15px;
+
+    padding: 18px;
+
+    margin-bottom: 25px;
+}
+
+
+.result-box span {
+
+    display: block;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+}
+
+
+.result-box strong {
+
+    display: block;
+
+    font-size: 28px;
+
+    color: #4ade80;
+
+    margin-top: 5px;
+}
+
+
+.result-box div:last-child strong {
+
+    color: #facc15;
+}
+/* ============================================
+   GAME OVER REASON
+============================================ */
+
+.game-over-reason {
+
+    color: #f87171;
+
+    font-size: 16px;
+
     font-weight: bold;
 
-    cursor: pointer;
+    margin-bottom: 20px;
+
+    padding: 10px 15px;
+
+    background: #2a1820;
+
+    border: 1px solid #7f1d1d;
+
+    border-radius: 10px;
 }
 
-#restartBtn:hover {
-    background: #16a34a;
+/* ============================================
+   PAUSE OVERLAY
+============================================ */
+
+.pause-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 10;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 20px;
+
+    background:
+        rgba(7, 17, 31, 0.94);
+
+    border-radius: 24px;
 }
 
-@media (max-width: 500px) {
 
-    .game-container {
-        width: 95%;
-        padding: 15px;
+.pause-overlay h2 {
+
+    font-size: 28px;
+}
+
+
+/* ============================================
+   MOBILE CONTROLS
+============================================ */
+
+.mobile-controls {
+
+    display: none;
+
+    margin-top: 10px;
+
+    text-align: center;
+}
+
+
+.mobile-controls div {
+
+    display: flex;
+
+    justify-content: center;
+}
+
+
+.mobile-controls button {
+
+    width: 50px;
+
+    height: 45px;
+
+    margin: 3px;
+
+    border-radius: 10px;
+
+    background: #374151;
+
+    color: white;
+
+    font-size: 20px;
+}
+
+
+.mobile-controls button:active {
+
+    transform: scale(0.9);
+}
+
+
+/* ============================================
+   MOBILE
+============================================ */
+
+@media (max-width: 600px) {
+
+    body {
+
+        padding: 10px;
     }
 
-    #gameCanvas {
-        width: 100%;
-        height: auto;
+
+    .game-wrapper {
+
+        padding: 18px;
+
+        border-radius: 18px;
     }
+
+
+    h1 {
+
+        font-size: 30px;
+    }
+
+
+    .mobile-controls {
+
+        display: block;
+    }
+
+
+    .game-header {
+
+        gap: 5px;
+    }
+
+
+    .game-header strong {
+
+        font-size: 18px;
+    }
+
+
+    .label {
+
+        font-size: 9px;
+    }
+
+
+    .result-box {
+
+        gap: 15px;
+    }
+
 }
